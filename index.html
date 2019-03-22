@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta author="huzaynbolt" description="Currency converter">
+    <title>Title Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    <style>
+        * {
+            border-right: 0px;
+        }
+        
+        body {
+            background-color: aquamarine;
+            font-family: 'Oswald', 'Courier New', Courier, monospace
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="text-center info">Currency converter application</h1>
+
+    <div id="app">
+        <div class="container my-5">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <label>From</label>
+
+                    <select v-model="from" name="" id="from" class="form-control">
+                    <option :value="currency.id" v-for="currency in formattedCurrencies">{{currency.currencyName}}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+
+                    <label>To</label>
+
+                    <select v-model="to" name="" id="from" class="form-control">
+                    <option :value="currency.id" v-for="currency in formattedCurrencies">{{currency.currencyName}}</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+
+            <div class="row">
+
+                <div class=" col-md-6 offset-md-3">
+
+
+                    <input type="text" v-model="amount" name="" placeholder="amount" id="input" class="form-control my-5">
+
+                    <div class="text-center">
+
+                        <button type="button" :disabled="disabled" @click="calculateResult()" class="btn btn-lg btn-primary">Convert</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 offset-md-3">
+                    <h1 class="text-center display-2 mt-5">{{convertedAmount}}</h1>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!-- Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+    <!--Axios-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
